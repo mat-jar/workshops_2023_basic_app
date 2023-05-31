@@ -5,15 +5,22 @@ class UserCalendarNotifier
 
   CALENDAR_ID = 'primary'.freeze
 
-  def initialize(user, book)
+  def initialize(user:, book: nil, event_id: nil)
     @user = user
     @book = book
+    @event_id = event_id
   end
 
   def insert_event
     return unless user.token.present? && user.refresh_token.present?
 
     google_calendar_client.insert_event(CALENDAR_ID, event_data)
+  end
+
+  def delete_event
+    return unless user.token.present? && user.refresh_token.present?
+
+    google_calendar_client.delete_event(CALENDAR_ID, @event_id)
   end
 
 
