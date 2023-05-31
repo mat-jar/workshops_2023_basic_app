@@ -1,5 +1,9 @@
 class WeatherPresenter
 
+def initialize(ip_address)
+  @ip_address = ip_address
+end
+
 def encourage_text
   if good_to_read_outside?
     "Get some snacks and go read a book in a park!"
@@ -35,7 +39,7 @@ def good_to_read_outside?
 end
 
 def weather_data
-    @weather_data ||= WeatherApiConnector.new.weather_data
+    @weather_data ||= WeatherApiConnector.new.weather_data(@ip_address)
 end
 
 end
