@@ -4,7 +4,7 @@ def encourage_text
   if good_to_read_outside?
     "Get some snacks and go read a book in a park!"
   else
-    "It's always a good weather to read a book!"
+    "It's always good weather to read a book!"
   end
 end
 
