@@ -36,3 +36,6 @@
 
 # Ignore personal configuration
 /config/configuration.yml
+
+#Ignore workshop docs
+/docs
