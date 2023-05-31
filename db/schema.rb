@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_16_140012) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_24_160156) do
   create_table "authors", force: :cascade do |t|
     t.string "name"
     t.string "surname"
@@ -62,6 +62,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_16_140012) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "notification_events", force: :cascade do |t|
+    t.string "event_id"
+    t.integer "book_loan_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_loan_id"], name: "index_notification_events_on_book_loan_id"
+  end
+
   create_table "publishers", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -91,4 +99,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_16_140012) do
   add_foreign_key "books", "authors"
   add_foreign_key "books", "categories"
   add_foreign_key "books", "publishers"
+  add_foreign_key "notification_events", "book_loans"
 end
