@@ -9,4 +9,16 @@ class UserMailer < ApplicationMailer
 
     mail(to: @user_email, subject: email_subject)
   end
+
+  def due_date_notification_email(book_loan)
+    @title = book_loan.book.title
+    @loan_date = book_loan.created_at
+    @user_email = book_loan.user.email
+
+    email_subject = "A book " + @title + " must be returned tomorrow"
+
+    mail(to: @user_email, subject: email_subject)
+
+  end
+
 end
