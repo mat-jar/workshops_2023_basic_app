@@ -101,3 +101,7 @@ group :test do
 end
 
 gem "dockerfile-rails", ">= 1.2", :group => :development
+
+gem "sidekiq", "~> 7.1"
+
+gem "sidekiq-cron", "~> 1.10"
