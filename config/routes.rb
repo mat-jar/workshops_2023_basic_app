@@ -24,4 +24,6 @@ Rails.application.routes.draw do
 
   mount Sidekiq::Web => "/sidekiq" # mount Sidekiq::Web in your Rails app
 
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+
 end
