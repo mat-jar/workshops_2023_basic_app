@@ -69,6 +69,7 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.4)
       public_suffix (>= 2.0.2, < 6.0)
+    amq-protocol (2.3.2)
     ast (2.4.2)
     autoprefixer-rails (10.4.13.0)
       execjs (~> 2)
@@ -81,6 +82,9 @@ GEM
       popper_js (>= 2.11.6, < 3)
       sassc-rails (>= 2.0.0)
     builder (3.2.4)
+    bunny (2.20.3)
+      amq-protocol (~> 2.3, >= 2.3.1)
+      sorted_set (~> 1, >= 1.0.2)
     capybara (3.39.1)
       addressable
       matrix
@@ -176,6 +180,11 @@ GEM
       addressable (~> 2.8)
     letter_opener (1.8.1)
       launchy (>= 2.2, < 3)
+    letter_opener_web (2.0.0)
+      actionmailer (>= 5.2)
+      letter_opener (~> 1.7)
+      railties (>= 5.2)
+      rexml
     loofah (2.21.3)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -282,6 +291,7 @@ GEM
       zeitwerk (~> 2.5)
     rainbow (3.1.1)
     rake (13.0.6)
+    rbtree (0.4.6)
     redis (4.8.1)
     redis-client (0.14.1)
       connection_pool
@@ -360,6 +370,7 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    set (1.0.3)
     shoulda-matchers (5.3.0)
       activesupport (>= 5.2.0)
     sidekiq (7.1.1)
@@ -379,6 +390,9 @@ GEM
     snaky_hash (2.0.1)
       hashie
       version_gem (~> 1.1, >= 1.1.1)
+    sorted_set (1.0.3)
+      rbtree
+      set (~> 1.0)
     sprockets (4.2.0)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -431,6 +445,7 @@ DEPENDENCIES
   a9n
   bootsnap
   bootstrap
+  bunny
   capybara
   debug
   devise
@@ -441,6 +456,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   letter_opener
+  letter_opener_web
   omniauth-google-oauth2
   omniauth-rails_csrf_protection
   pg
