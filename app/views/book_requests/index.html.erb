@@ -39,4 +39,18 @@
       <% end %>
     </ul>
   </div>
+  <div class="logs">
+    <h2>Logs (total number: <%= user_logs_presenter.count_logs %> )</h2>
+    <ul class="list-group">
+      <% user_logs_presenter.user_logs.each do |user_log| %>
+        <li class="list-group-item">
+          <div class="user-log-info">
+            <p class="user-log-data"><%= user_log["data"] %></p>
+            <p class="user-log-detail">Log ID: <%= user_log["id"] %></p>
+            <p class="user-log-detail">Created at: <%= user_log["created_at"].to_datetime.strftime("%Y-%m-%d %H:%M")  %></p>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 </div>
