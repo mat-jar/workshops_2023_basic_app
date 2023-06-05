@@ -4,3 +4,9 @@ defaults:
   google_client_secret: '__your_client_secret__'
   app_host: 'http://localhost:3000'
   ipgeolocation_api_key: '__your_api_key__'
+  connection_options: { host: "__your_host__",
+                        port: "__your_port__",
+                        vhost: "__your_vhost__",
+                        username: "__your_username__",
+                        password: "__your_password__"
+                        }
