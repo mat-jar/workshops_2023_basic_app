@@ -26,4 +26,8 @@ module ApplicationHelper
     @weather_presenter ||= WeatherPresenter.new(ip_address)
   end
 
+  def user_logs_presenter
+    @user_logs = UserLogsPresenter.new(current_user)
+  end
+
 end
