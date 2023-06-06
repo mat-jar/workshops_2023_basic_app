@@ -2,7 +2,11 @@
 
 <div class="container">
   <h1 class="text-center mb-5">Books</h1>
-  
+  <div class='text-center mb-5' data-controller='search'>
+    <%= text_field_tag :query,'', placeholder: 'Search by title', data: {action: 'input->search#search', target: 'search.params'}%>
+  </div>
+  <div class="row" id="search_results"></div>
+  <div id="infinity_scroll">
   <%= turbo_frame_tag "paginate_page_#{@books.current_page}" do %>
     <div class="row">
       <%= render partial: 'index_item', collection: @books, as: :book %>
@@ -15,4 +19,5 @@
     <% end %>
 
   <% end %>
+  </div>
 </div>
