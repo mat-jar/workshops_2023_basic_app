@@ -15,12 +15,18 @@ class UserCalendarNotifier
     return unless user.token.present? && user.refresh_token.present?
 
     google_calendar_client.insert_event(CALENDAR_ID, event_data)
+
+    rescue Google::Apis::AuthorizationError, Google::Apis::ClientError => error
+      puts "Error (#{ error.message })"
   end
 
   def delete_event
     return unless user.token.present? && user.refresh_token.present?
 
     google_calendar_client.delete_event(CALENDAR_ID, @event_id)
+    rescue Google::Apis::AuthorizationError, Google::Apis::ClientError => error
+      puts "Error (#{ error.message })"
+      return :error
   end
 
 
