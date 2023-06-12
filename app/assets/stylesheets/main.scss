@@ -17,6 +17,14 @@
   }
 }
 
+.inline-action {
+  display: none;
+}
+
+.inline-show .inline-action {
+  display: initial;
+}
+
 .logo {
   width: 150px;
   height: 150px;

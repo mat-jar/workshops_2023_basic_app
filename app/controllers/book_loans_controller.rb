@@ -45,12 +45,16 @@ class BookLoansController < ApplicationController
   end
 
   def notice_calendar_add
-    event_id = UserCalendarNotifier.new(user: current_user, book: book).insert_event.id
-    NotificationEvent.create(event_id: event_id, book_loan: @book_loan)
+    event_id = UserCalendarNotifier.new(user: current_user, book: book).insert_event&.id
+    unless event_id.nil?
+      NotificationEvent.create(event_id: event_id, book_loan: @book_loan)
+    end
   end
 
   def notice_calendar_delete
-    UserCalendarNotifier.new(user: current_user, event_id: @book_loan.notification_event.event_id).delete_event
+    if UserCalendarNotifier.new(user: current_user, event_id: @book_loan.notification_event&.event_id).delete_event != :error
+      @book_loan.notification_event&.destroy
+    end
   end
 
 end
