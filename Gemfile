@@ -91,6 +91,7 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
   gem 'letter_opener'
+  gem 'letter_opener_web' 
 end
 
 group :test do
@@ -101,3 +102,7 @@ group :test do
 end
 
 gem "dockerfile-rails", ">= 1.2", :group => :development
+
+gem "sidekiq", "~> 7.1"
+
+gem "sidekiq-cron", "~> 1.10"

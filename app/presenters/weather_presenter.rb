@@ -13,19 +13,19 @@ def encourage_text
 end
 
 def description
-  weather_data["current"]["condition"]["text"]
+  weather_data.dig("current", "condition", "text")
 end
 
 def temperature
-  weather_data["current"]["temp_c"]
+  weather_data.dig("current", "temp_c")
 end
 
 def icon
-  weather_data["current"]["condition"]["icon"]
+  weather_data.dig("current", "condition", "icon")
 end
 
 def location
-  weather_data["location"]["name"]
+  weather_data.dig("location", "name")
 end
 
 private
