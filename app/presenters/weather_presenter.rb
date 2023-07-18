@@ -1,45 +1,45 @@
 class WeatherPresenter
 
-def initialize(ip_address)
-  @ip_address = ip_address
-end
-
-def encourage_text
-  if good_to_read_outside?
-    "Get some snacks and go read a book in a park!"
-  else
-    "It's always good weather to read a book!"
+  def initialize(ip_address)
+    @ip_address = ip_address
   end
-end
 
-def description
-  weather_data["current"]["condition"]["text"]
-end
+  def encourage_text
+    if good_to_read_outside?
+      "Get some snacks and go read a book in a park!"
+    else
+      "It's always good weather to read a book!"
+    end
+  end
 
-def temperature
-  weather_data["current"]["temp_c"]
-end
+  def description
+    weather_data["current"]["condition"]["text"]
+  end
 
-def icon
-  weather_data["current"]["condition"]["icon"]
-end
+  def temperature
+    weather_data["current"]["temp_c"]
+  end
 
-def location
-  weather_data["location"]["name"]
-end
+  def icon
+    weather_data["current"]["condition"]["icon"]
+  end
 
-private
+  def location
+    weather_data["location"]["name"]
+  end
 
-def nice_weather?
-  description == 'Sunny' || description =='Partly cloudy'
-end
+  private
 
-def good_to_read_outside?
-  nice_weather? && temperature > 15
-end
+  def nice_weather?
+    description == 'Sunny' || description == 'Partly cloudy'
+  end
 
-def weather_data
+  def good_to_read_outside?
+    nice_weather? && temperature > 15
+  end
+
+  def weather_data
     @weather_data ||= WeatherApiConnector.new.weather_data(@ip_address)
-end
+  end
 
 end

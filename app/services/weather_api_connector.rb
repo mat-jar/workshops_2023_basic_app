@@ -1,7 +1,7 @@
 class WeatherApiConnector
 
-API_KEY = A9n.weather_api_key
-LOCATION = 'Cracow'
+  API_KEY = A9n.weather_api_key
+  LOCATION = 'Cracow'
 
   def weather_data(ip_address)
     location = IpgeolocationApiConnector.new.find_location(ip_address) || LOCATION
@@ -10,5 +10,5 @@ LOCATION = 'Cracow'
     response = Net::HTTP.get(uri)
     JSON.parse(response)
   end
-
+  
 end
