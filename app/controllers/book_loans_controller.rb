@@ -5,6 +5,7 @@ class BookLoansController < ApplicationController
   def create
     respond_to do |format|
       if @book_loan.save
+        notice_calendar_add
         format.html { redirect_to book_url(book), notice: flash_notice }
         format.json { render :show, status: :created, location: @book_loan }
       else
@@ -17,6 +18,7 @@ class BookLoansController < ApplicationController
   def cancel
     respond_to do |format|
       if @book_loan.cancelled!
+        notice_calendar_delete
         format.html { redirect_to book_requests_path, notice: flash_notice }
         format.json { render :show, status: :ok, location: book }
       end
@@ -38,4 +40,14 @@ class BookLoansController < ApplicationController
   def book_loan_params
     params.require(:book_id)
   end
+
+  def notice_calendar_add
+    event_id = UserCalendarNotifier.new(user: current_user, book: book).insert_event.id
+    NotificationEvent.create(event_id: event_id, book_loan: @book_loan)
+  end
+
+  def notice_calendar_delete
+    UserCalendarNotifier.new(user: current_user, event_id: @book_loan.notification_event.event_id).delete_event
+  end
+
 end

@@ -1,6 +1,7 @@
 class BookLoan < ApplicationRecord
   belongs_to :book
   belongs_to :user
+  has_one :notification_event
 
   enum status: { checked_out: 'checked_out', cancelled: 'cancelled', returned: 'returned' }
 

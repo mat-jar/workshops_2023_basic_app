@@ -22,7 +22,8 @@ module ApplicationHelper
   end
 
   def weather_presenter
-    @weather_presenter ||= WeatherPresenter.new
+    ip_address = request.env['HTTP_FLY_CLIENT_IP'] || request.remote_ip
+    @weather_presenter ||= WeatherPresenter.new(ip_address)
   end
 
 end
